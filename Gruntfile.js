@@ -64,14 +64,6 @@ module.exports = function (grunt) {
         },
 
         less: {
-            production: {
-                options: {
-                    cleancss: true
-                },
-                files: {
-                    'build/css/bootstrap-datetimepicker.min.css': 'src/less/bootstrap-datetimepicker-build.less'
-                }
-            },
             development: {
                 files: {
                     'build/css/bootstrap-datetimepicker.css': 'src/less/bootstrap-datetimepicker-build.less'

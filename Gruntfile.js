@@ -3,25 +3,6 @@ module.exports = function (grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
 
-        uglify : {
-            target: {
-                files: {
-                    'build/js/bootstrap-datetimepicker.min.js' : 'src/js/bootstrap-datetimepicker.js'
-                }
-            },
-            options: {
-                mangle: true,
-                compress: {
-                    dead_code: false // jshint ignore:line
-                },
-                output: {
-                    ascii_only: true // jshint ignore:line
-                },
-                report: 'min',
-                preserveComments: 'some'
-            }
-        },
-
         jshint: {
             all: [
                 'Gruntfile.js', 'src/js/*.js', 'test/*.js'
@@ -131,20 +112,10 @@ module.exports = function (grunt) {
     // Default task.
     grunt.registerTask('default', ['jshint', 'jscs', 'less', 'jasmine']);
 
-    // travis build task
-    grunt.registerTask('build:travis', [
-        // code style
-        'jshint', 'jscs',
-        // build
-        'uglify', 'less',
-        // tests
-        'jasmine'
-    ]);
-
     // Task to be run when building
     grunt.registerTask('build', [
-        'jshint', 'jscs', 'uglify', 'less'
+        'jshint', 'jscs', 'less'
     ]);
 
-    grunt.registerTask('test', ['jshint', 'jscs', 'uglify', 'less', 'jasmine']);
+    grunt.registerTask('test', ['jshint', 'jscs', 'less', 'jasmine']);
 };
